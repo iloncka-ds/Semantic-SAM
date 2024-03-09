@@ -80,7 +80,7 @@ def plot_multi_results(iou_sort_masks, area_sort_masks, image_ori, save_path='..
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     plt.imshow(image_ori)
-    plt.savefig('../vis/input.png')
+    plt.savefig(os.path.join(save_path, 'input.png'))
     def create_long_image(masks):
         ims = []
         for img in masks:
@@ -90,5 +90,5 @@ def plot_multi_results(iou_sort_masks, area_sort_masks, image_ori, save_path='..
         for i, im in enumerate(ims):
             result.paste(im, box=(i * width, 0))
         return result
-    create_long_image(iou_sort_masks).save('../vis/all_results_sort_by_iou.png')
-    create_long_image(area_sort_masks).save('../vis/all_results_sort_by_areas.png')
+    create_long_image(iou_sort_masks).save(os.path.join(save_path, 'all_results_sort_by_iou.png'))
+    create_long_image(area_sort_masks).save(os.path.join(save_path, 'all_results_sort_by_areas.png'))
